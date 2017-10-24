@@ -70,7 +70,8 @@ class ViewController: UIViewController {
         case "%":
             var result = Double(data[0])
             for num in 1...(data.count - 2) {
-                result = Double(Int(result!) % Int(Double(data[num])!))
+                var next = Double(data[num]);
+                result = result! - Double(Int(result! / Double(next!))) * Double(next!)
             }
             return result!
         case "Fact":
@@ -118,7 +119,8 @@ class ViewController: UIViewController {
             case "/":
                 result = result! / Double(scan.next())!
             case "%":
-                result = Double(Int(result!) % Int(Double(scan.next())!))
+                var next = scan.next()
+                result = result! - Double(Int(result! / Double(next)!)) * Double(next)!
             default:
                 return 0.0;
             }
